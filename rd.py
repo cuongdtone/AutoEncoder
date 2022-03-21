@@ -9,9 +9,8 @@ from model import AE, image_torch
 
 #  use gpu if available
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-input_path = '/home/cuong/Downloads/dataset_flower_origin/'
-input_size = 32
-
+input_path = 'dataset_flower_gray'
+input_size = 64
 normalize = transforms.Normalize(mean=[0.5],
                                  std=[0.5])
 preprocess = transforms.Compose([

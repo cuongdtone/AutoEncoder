@@ -26,3 +26,4 @@ run train_ae.py
 ```
 run test_reconstruct_image.py
 ```
+# Early result

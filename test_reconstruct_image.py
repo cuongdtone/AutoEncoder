@@ -6,11 +6,11 @@ import matplotlib.pyplot as plt
 
 
 input_size = 64
-model = AE(input_size=input_size)
-model.load_state_dict(torch.load('binary.h5', map_location='cpu'))
+model = AE(input_size=input_size, code_size=9)
+model.load_state_dict(torch.load('gray.h5', map_location='cpu'))
 model.eval()
 
-list_image = glob.glob('dataset_flower_binary/rose/*.png')
+list_image = glob.glob('dataset_flower_gray/hibiscus/*.png')
 
 cv2.namedWindow('ori', cv2.WINDOW_NORMAL)
 cv2.resizeWindow('ori', 480, 480)
