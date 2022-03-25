@@ -14,16 +14,17 @@ Ho Thanh Long
 ```
 ## Sumary  
 ***
-- Flower recognition with feature etractor is Auto Encoder  
-## Quick run 
-### Auto Encoder
-- Traning phase:
-```
-config hyperparameter at train_ae.py
-run train_ae.py
-```
-- Testing phase:  
-```
-run test_reconstruct_image.py
-```
-# Early result
+- Flower recognition with Auto Encoder + ANN/SVM
+## Auto Encoder  
+- Technical limit: only using Neural Network with Fully Connected layers
+- Preprocess image:
+![](imgs/cfa_image.png)
+- Model: 
+![](imgs/AutoEncoder.jpg "Time")
+
+
+## Early result 
+![](imgs/test_0.jpg)
+![](imgs/test_1.jpg)
+![](imgs/test_2.jpg)
+![](imgs/test_3.jpg)

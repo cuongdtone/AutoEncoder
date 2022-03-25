@@ -4,21 +4,20 @@ import torchvision
 from torchvision import transforms, datasets
 from PIL import Image
 from torch import nn, optim
-from model import AE, image_torch
+from models.model import AE, image_torch
+import yaml
+import colour
+from utils.cfa import Demosaic
+from utils.transform import transformer as preprocess
 
+with open('config.yaml', 'r') as f:
+    param = yaml.load(f, yaml.FullLoader)
 
+demosaic = Demosaic()
 #  use gpu if available
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-input_path = 'dataset_flower_gray'
-input_size = 64
-normalize = transforms.Normalize(mean=[0.5],
-                                 std=[0.5])
-preprocess = transforms.Compose([
-    transforms.Grayscale(),
-    transforms.Resize(int(input_size / 0.875)),
-    transforms.CenterCrop(input_size),
-    transforms.ToTensor(),
-    normalize])
+input_path = 'dataset_flower_cfa'
+input_size = param['input_size']
 
 dataset = datasets.ImageFolder(input_path,
                      preprocess)
@@ -30,5 +29,7 @@ cv2.resizeWindow('ori', 1280, 720)
 for batch_features, _ in train_loader:
     batch_features = batch_features.view(-1, input_size**2).to(device)[0]
     x_image = image_torch(batch_features, input_size)
+    recontruct = demosaic.cfa2bgr(x_image)
     cv2.imshow('ori', x_image)
+    cv2.imshow('recontruc', recontruct)
     cv2.waitKey()
