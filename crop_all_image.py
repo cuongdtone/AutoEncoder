@@ -63,13 +63,15 @@ if __name__ == '__main__':
 
             I = 255 * (I > 0)
             I = I.astype(np.uint8)
+            
+            try:
+                I,idx = crop_binary_image(I)        #crop binary and return idx
+                J = crop_rgb_image(J,idx)           #crop rbg image with idx from mask
 
-            I,idx = crop_binary_image(I)        #crop binary and return idx
-            J = crop_rgb_image(J,idx)           #crop rbg image with idx from mask
-
-
-            cv2.imwrite(binary_output_path, I)
-            cv2.imwrite(original_output_path, J)
+                cv2.imwrite(binary_output_path,I)
+                cv2.imwrite(original_output_path, J)
+            except:
+                print(binary_input_path,'error !'
 
 
 
