@@ -71,7 +71,7 @@ if __name__ == '__main__':
                 cv2.imwrite(binary_output_path,I)
                 cv2.imwrite(original_output_path, J)
             except:
-                print(binary_input_path,'error !'
+                print(binary_input_path,'error !')
 
 
 
