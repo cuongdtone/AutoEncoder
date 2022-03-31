@@ -58,11 +58,6 @@ if __name__ == '__main__':
             binary_output_path = binary_input_path.replace(binary_input, binary_crop)
             original_output_path = original_input_path .replace(original_input, original_crop)
 
-            print(binary_input_path)
-            print(original_input_path)
-            print(binary_output_path)
-            print(original_output_path)
-
             I = cv2.imread(binary_input_path,0) #binary image
             J = cv2.imread(original_input_path) #original image
 
@@ -73,7 +68,7 @@ if __name__ == '__main__':
             J = crop_rgb_image(J,idx)           #crop rbg image with idx from mask
 
 
-            cv2.imwrite(binary_output_path,I)
+            cv2.imwrite(binary_output_path, I)
             cv2.imwrite(original_output_path, J)
 
 
