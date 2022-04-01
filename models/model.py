@@ -27,30 +27,40 @@ class AE(nn.Module):
         self.input_size = input_size
         self.code_size = code_size
         self.encoder = nn.Sequential(
-            nn.Linear(input_size **2, 4096),
+            nn.Linear(input_size **2, 2056),
             nn.ReLU(True),
-            nn.Linear(4096, 1024),
+
+            nn.Linear(2056, 1024),
             nn.ReLU(True),
             nn.BatchNorm1d(1024),
-            nn.Linear(1024, 128),
+
+            nn.Linear(1024, 256),
             nn.ReLU(True),
-            nn.Linear(128, 64),
+            nn.BatchNorm1d(256),
+
+            nn.Linear(256, 64),
             nn.ReLU(True),
             nn.BatchNorm1d(64),
-            nn.Linear(64, code_size),
-            nn.Tanh())
+
+            nn.Linear(64, code_size))
+
         self.decoder = nn.Sequential(
             nn.Linear(code_size, 64),
+
             nn.ReLU(True),
             nn.BatchNorm1d(64),
-            nn.Linear(64, 128),
+            nn.Linear(64, 256),
+
             nn.ReLU(True),
-            nn.Linear(128, 1024),
+            nn.BatchNorm1d(256),
+            nn.Linear(256, 1024),
+
             nn.ReLU(True),
             nn.BatchNorm1d(1024),
-            nn.Linear(1024, 4096),
+            nn.Linear(1024, 2056),
+
             nn.ReLU(True),
-            nn.Linear(4096, input_size ** 2),
+            nn.Linear(2056, input_size ** 2),
             nn.Tanh())
     def preprocess_image(self, gray_image):
             preprocess = transformer
@@ -61,16 +71,17 @@ class AE(nn.Module):
     def forward(self, x):
         #x = self.preprocess_image(gray_image)
         encoded = self.encoder(x)
+        #print(encoded)
         decoded = self.decoder(encoded)
         return decoded
     def get_coding(self, x):
         return self.encoder(x)
 
 class AE_NET(nn.Module):
-    def __init__(self, num_classes=5, input_size=100, code_size=30, model_file='gray.h5', device='cpu'):
+    def __init__(self, num_classes=5, input_size=100, code_size=30, feature_etractor='model.h5', device='cpu'):
         super(AE_NET, self).__init__()
         self.feature_extractor = AE(input_size=input_size, code_size=code_size)
-        self.feature_extractor.load_state_dict(torch.load(model_file, map_location=device))
+        self.feature_extractor.load_state_dict(torch.load(feature_etractor, map_location=device))
         self.feature_extractor.eval()
         self.classifier = nn.Sequential(
             nn.Linear(code_size, 15),
@@ -81,9 +92,6 @@ class AE_NET(nn.Module):
         feature = self.feature_extractor.get_coding(x)
         out = self.classifier(feature)
         return out
-
-
-
 
 
 if __name__ == '__main__':

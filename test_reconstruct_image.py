@@ -17,10 +17,12 @@ input_size = param['input_size']
 code_size = param['code_size']
 
 model = AE(input_size=input_size, code_size=param['code_size'])
-model.load_state_dict(torch.load('runs/gray.h5', map_location='cpu'))
+model.load_state_dict(torch.load('runs/ae.pt', map_location='cpu'))
 model.eval()
-list_image = glob.glob('cfa_test_data/*/*.png')
+print("#Parameter: ", sum(p.numel() for p in model.parameters()))
+list_image = glob.glob('dataset_flower_cfa/test/*/*')
 random.shuffle(list_image)
+print("#image test: ", len(list_image))
 
 demosaic = Demosaic()
 cv2.namedWindow('Show', cv2.WINDOW_NORMAL)
@@ -39,11 +41,14 @@ for i in list_image:
     one_case = cv2.vconcat([x_image, y_image])
     images.append(one_case)
     if len(images) == 16:
-        show = concat_image(images, grid_shape=(2, 8))
+        show = concat_image(images, grid_shape=(2, 8), image_size=(input_size, input_size*2))
         images = []
         save_new_image('imgs', show)
         cv2.imshow('Show', show)
-        cv2.waitKey()
+        key = cv2.waitKey(5)
+        while key != ord(' '):
+            key = cv2.waitKey(5)
+
 show = concat_image(images, grid_shape=(2, 8))
 images = []
 cv2.imshow('Show', show)
