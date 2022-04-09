@@ -8,6 +8,14 @@ evaluate_classification.py
 home.ui
 new_gui.py
 rd.py
-test_*
-tool_*
-train_*
+test_recognition.py
+test_reconstruct_image.py
+tool_create_bgr_object_dataset.py
+tool_create_cfa_dataset.py
+tool_crop_object_with_bg.py
+tool_filter_dataset.py
+train_ae.py
+train_classification.py
+train_clss_2.py
+train_test_split.py
+untitled.ui
