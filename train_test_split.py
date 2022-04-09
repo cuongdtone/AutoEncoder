@@ -4,8 +4,8 @@ import os
 import shutil
 import cv2
 
-dataset_path = 'dataset_flower_origin'
-out_path = 'dataset_flower_splited'
+dataset_path = 'dataset_flower'
+out_path = 'dataset_flower_crop_obj'
 
 try:
     os.mkdir(out_path)

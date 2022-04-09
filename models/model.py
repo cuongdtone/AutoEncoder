@@ -28,18 +28,18 @@ class AE(nn.Module):
         self.code_size = code_size
         self.encoder = nn.Sequential(
             nn.Linear(input_size **2, 2056),
-            nn.ReLU(True),
+            nn.Hardswish(inplace=True),
 
             nn.Linear(2056, 1024),
-            nn.ReLU(True),
+            nn.Hardswish(inplace=True),
             nn.BatchNorm1d(1024),
 
             nn.Linear(1024, 256),
-            nn.ReLU(True),
+            nn.Hardswish(inplace=True),
             nn.BatchNorm1d(256),
 
             nn.Linear(256, 64),
-            nn.ReLU(True),
+            nn.Hardswish(inplace=True),
             nn.BatchNorm1d(64),
 
             nn.Linear(64, code_size))
@@ -47,19 +47,19 @@ class AE(nn.Module):
         self.decoder = nn.Sequential(
             nn.Linear(code_size, 64),
 
-            nn.ReLU(True),
+            nn.Hardswish(inplace=True),
             nn.BatchNorm1d(64),
             nn.Linear(64, 256),
 
-            nn.ReLU(True),
+            nn.Hardswish(inplace=True),
             nn.BatchNorm1d(256),
             nn.Linear(256, 1024),
 
-            nn.ReLU(True),
+            nn.Hardswish(inplace=True),
             nn.BatchNorm1d(1024),
             nn.Linear(1024, 2056),
 
-            nn.ReLU(True),
+            nn.Hardswish(inplace=True),
             nn.Linear(2056, input_size ** 2),
             nn.Tanh())
     def preprocess_image(self, gray_image):
@@ -76,13 +76,28 @@ class AE(nn.Module):
         return decoded
     def get_coding(self, x):
         return self.encoder(x)
+    def decode(self, code):
+        return self.decoder(code)
+
+class Net(nn.Module):
+    def __init__(self, input_size=32, num_classes=5, device='cpu'):
+        super(Net, self).__init__()
+        self.classifier = nn.Sequential(
+            nn.Linear(input_size, 16),
+            nn.ReLU(),
+            nn.Linear(16, num_classes),
+        )
+    def forward(self, x):
+        out = self.classifier(x)
+        return out
 
 class AE_NET(nn.Module):
     def __init__(self, num_classes=5, input_size=100, code_size=30, feature_etractor='model.h5', device='cpu'):
         super(AE_NET, self).__init__()
         self.feature_extractor = AE(input_size=input_size, code_size=code_size)
-        self.feature_extractor.load_state_dict(torch.load(feature_etractor, map_location=device))
-        self.feature_extractor.eval()
+        if feature_etractor != '':
+            self.feature_extractor.load_state_dict(torch.load(feature_etractor, map_location=device))
+            self.feature_extractor.eval()
         self.classifier = nn.Sequential(
             nn.Linear(code_size, 15),
             nn.ReLU(),
@@ -92,12 +107,10 @@ class AE_NET(nn.Module):
         feature = self.feature_extractor.get_coding(x)
         out = self.classifier(feature)
         return out
-
-
 if __name__ == '__main__':
 
-    gray_image = cv2.imread('dataset_flower_binary/daisy/21652746_cc379e0eea_m.png', 0)
-    model = AE_NET()
-    x = model.feature_extractor.preprocess_image(gray_image)
-    y = model(x)
-    print(y)
+    net = Net()
+    x = torch.rand((124, 32))
+    out = net(x)
+    print(x.shape)
+    print(out.shape)

@@ -1,2 +1,13 @@
 dataset_*
 runs/*
+__pycache__
+.idea
+ae_tab.py
+evaluate_2.py
+evaluate_classification.py
+home.ui
+new_gui.py
+rd.py
+test_*
+tool_*
+train_*

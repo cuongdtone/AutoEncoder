@@ -10,17 +10,16 @@ from utils.cfa import Demosaic
 from utils.draw import concat_image
 from utils.output import save_new_image
 
-
 with open('config.yaml', 'r') as f:
     param = yaml.load(f, Loader=yaml.FullLoader)
 input_size = param['input_size']
 code_size = param['code_size']
 
 model = AE(input_size=input_size, code_size=param['code_size'])
-model.load_state_dict(torch.load('runs/ae.pt', map_location='cpu'))
+model.load_state_dict(torch.load('runs/ae_gray.pt', map_location='cpu'))
 model.eval()
 print("#Parameter: ", sum(p.numel() for p in model.parameters()))
-list_image = glob.glob('dataset_flower_cfa/test/*/*')
+list_image = glob.glob('dataset_flower_gray/test/*/*')
 random.shuffle(list_image)
 print("#image test: ", len(list_image))
 
