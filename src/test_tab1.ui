@@ -1,0 +1,838 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1239</width>
+    <height>721</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(136, 138, 133);</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_3">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QFrame" name="frame_3">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>100</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="leftMargin">
+       <number>9</number>
+      </property>
+      <property name="topMargin">
+       <number>9</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="logo_1">
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>100</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-color: rgb(255 ,255,255);
+font: 75 15pt &quot;Ubuntu Condensed&quot;;
+border-width : 1.5px;
+border-style:inset;
+border-radius: 8px;
+padding: 0 5px;
+color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item alignment="Qt::AlignHCenter">
+       <widget class="QLabel" name="label_15">
+        <property name="styleSheet">
+         <string notr="true">font: 75 15pt &quot;Ubuntu Condensed&quot;;
+color: rgb(255, 255, 255)
+</string>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt; font-weight:600;&quot;&gt;FLOWERS RECOGNITION&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="logo_2">
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>100</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-color: rgb(255 ,255,255);
+font: 75 15pt &quot;Ubuntu Condensed&quot;;
+border-width : 1.5px;
+border-style:inset;
+border-radius: 8px;
+padding: 0 5px;
+color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QFrame" name="frame_4">
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="spacing">
+       <number>9</number>
+      </property>
+      <property name="leftMargin">
+       <number>9</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>9</number>
+      </property>
+      <property name="bottomMargin">
+       <number>9</number>
+      </property>
+      <item>
+       <widget class="QFrame" name="frame_2">
+        <property name="maximumSize">
+         <size>
+          <width>800</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-color: rgb(255 ,255,255);
+font: 75 15pt &quot;Ubuntu Condensed&quot;;
+border-width : 1.5px;
+border-style:inset;
+border-radius: 8px;
+padding: 0 5px;
+color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <widget class="QFrame" name="frame_5">
+           <property name="styleSheet">
+            <string notr="true">border:none;</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_2">
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="verticalSpacing">
+             <number>0</number>
+            </property>
+            <item row="0" column="0" alignment="Qt::AlignRight|Qt::AlignTop">
+             <widget class="QLabel" name="label_5">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Original Image</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1" colspan="3">
+             <widget class="QLabel" name="label_6">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="4" alignment="Qt::AlignLeft|Qt::AlignTop">
+             <widget class="QLabel" name="label_14">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Reconstructed Image</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0" colspan="2" alignment="Qt::AlignLeft">
+             <widget class="QLabel" name="screen_or">
+              <property name="minimumSize">
+               <size>
+                <width>250</width>
+                <height>250</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>250</width>
+                <height>250</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(38, 162, 105);
+border-color: rgb(255 ,255,255);
+font: 75 15pt &quot;Ubuntu Condensed&quot;;
+border-width : 1.5px;
+border-style:inset;
+border-radius: 8px;
+padding: 0 5px;
+color: rgb(255, 255, 255);</string>
+              </property>
+              <property name="text">
+               <string>Input Image</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2" alignment="Qt::AlignVCenter">
+             <widget class="Line" name="line">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-color: rgb(255 ,255,255);
+font: 75 15pt &quot;Ubuntu Condensed&quot;;
+background-color: rgb(56, 64, 95);
+border-width : 1.5px;
+border-style:inset;
+border-radius: 8px;
+padding: 0 5px;
+color: rgb(255, 255, 255);</string>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Plain</enum>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="3" colspan="2" alignment="Qt::AlignRight">
+             <widget class="QLabel" name="screen_re">
+              <property name="minimumSize">
+               <size>
+                <width>250</width>
+                <height>250</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>250</width>
+                <height>250</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(38, 162, 105);
+border-color: rgb(255 ,255,255);
+font: 75 15pt &quot;Ubuntu Condensed&quot;;
+border-width : 1.5px;
+border-style:inset;
+border-radius: 8px;
+padding: 0 5px;
+color: rgb(255, 255, 255);</string>
+              </property>
+              <property name="text">
+               <string>Recontructed image</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="frame_6">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>100</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border: none;</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_6">
+            <item>
+             <widget class="QFrame" name="frame_11">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_3">
+               <item>
+                <widget class="QPushButton" name="back_button">
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">border-color: rgb(255 ,255,255);
+font: 75 15pt &quot;Ubuntu Condensed&quot;;
+background-color: rgb(56, 64, 95);
+border-width : 1.5px;
+border-style:inset;
+border-radius: 8px;
+padding: 0 5px;
+color: rgb(255, 255, 255);</string>
+                 </property>
+                 <property name="text">
+                  <string>Back</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="next_button">
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">border-color: rgb(255 ,255,255);
+font: 75 15pt &quot;Ubuntu Condensed&quot;;
+background-color: rgb(56, 64, 95);
+border-width : 1.5px;
+border-style:inset;
+border-radius: 8px;
+padding: 0 5px;
+color: rgb(255, 255, 255);</string>
+                 </property>
+                 <property name="text">
+                  <string>Next</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignHCenter">
+             <widget class="QToolButton" name="load_button">
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-color: rgb(255 ,255,255);
+font: 75 15pt &quot;Ubuntu Condensed&quot;;
+background-color: rgb(56, 64, 95);
+border-width : 1.5px;
+border-style:inset;
+border-radius: 8px;
+padding: 0 5px;
+color: rgb(255, 255, 255);</string>
+              </property>
+              <property name="text">
+               <string>Load Image</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_16">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 75 15pt &quot;Ubuntu Condensed&quot;;
+color: rgb(255, 255, 255);
+border: none;
+</string>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;22/05/2022&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="frame">
+        <property name="styleSheet">
+         <string notr="true">border-color: rgb(255 ,255,255);
+font: 75 15pt &quot;Ubuntu Condensed&quot;;
+border-width : 1.5px;
+border-style:inset;
+border-radius: 8px;
+padding: 0 5px;
+color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QFrame" name="frame_7">
+           <property name="styleSheet">
+            <string notr="true">border: none;</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_5">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>50</number>
+            </property>
+            <item>
+             <widget class="QFrame" name="frame_9">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>70</height>
+               </size>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_5">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_9">
+                 <property name="styleSheet">
+                  <string notr="true">font: 75 15pt &quot;Ubuntu Condensed&quot;;
+color: rgb(255, 255, 255);
+border: None</string>
+                 </property>
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Classifier&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QRadioButton" name="svm_checker">
+                 <property name="focusPolicy">
+                  <enum>Qt::StrongFocus</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">font: 75 15pt &quot;Ubuntu Condensed&quot;;
+color: rgb(255, 255, 255);
+border: None</string>
+                 </property>
+                 <property name="text">
+                  <string>SVM</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QRadioButton" name="ann_checker">
+                 <property name="styleSheet">
+                  <string notr="true">font: 75 15pt &quot;Ubuntu Condensed&quot;;
+color: rgb(255, 255, 255);
+border: None</string>
+                 </property>
+                 <property name="text">
+                  <string>ANN</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignTop">
+             <widget class="QFrame" name="frame_10">
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout">
+               <property name="horizontalSpacing">
+                <number>20</number>
+               </property>
+               <item row="0" column="0" alignment="Qt::AlignLeft">
+                <widget class="QLabel" name="label_2">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">font: 75 15pt &quot;Ubuntu Condensed&quot;;
+color: rgb(255, 255, 255);
+border: None</string>
+                 </property>
+                 <property name="text">
+                  <string>Prediction</string>
+                 </property>
+                 <property name="textFormat">
+                  <enum>Qt::AutoText</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1" alignment="Qt::AlignLeft">
+                <widget class="QLabel" name="predict">
+                 <property name="minimumSize">
+                  <size>
+                   <width>200</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">border-color: rgb(136, 138, 133);
+background-color: rgb(186, 189, 182);
+border-width : 1.5px;
+border-style:inset;
+border-radius: 8px;
+padding: 0 5px;
+color: rgb(255, 255, 255);</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0" alignment="Qt::AlignLeft">
+                <widget class="QLabel" name="label">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">font: 75 15pt &quot;Ubuntu Condensed&quot;;
+color: rgb(255, 255, 255);
+border: None</string>
+                 </property>
+                 <property name="text">
+                  <string>Confidence</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1" alignment="Qt::AlignLeft">
+                <widget class="QLabel" name="confidence">
+                 <property name="minimumSize">
+                  <size>
+                   <width>200</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">border-color: rgb(136, 138, 133);
+background-color: rgb(186, 189, 182);
+border-width : 1.5px;
+border-style:inset;
+border-radius: 8px;
+padding: 0 5px;
+color: rgb(255, 255, 255);</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0" alignment="Qt::AlignLeft">
+                <widget class="QLabel" name="label_3">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">font: 75 15pt &quot;Ubuntu Condensed&quot;;
+color: rgb(255, 255, 255);
+border: None</string>
+                 </property>
+                 <property name="text">
+                  <string>Inference Time</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1" alignment="Qt::AlignLeft">
+                <widget class="QLabel" name="time">
+                 <property name="minimumSize">
+                  <size>
+                   <width>200</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">border-color: rgb(136, 138, 133);
+background-color: rgb(186, 189, 182);
+border-width : 1.5px;
+border-style:inset;
+border-radius: 8px;
+padding: 0 5px;
+color: rgb(255, 255, 255);</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0" alignment="Qt::AlignLeft">
+                <widget class="QLabel" name="label_4">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">font: 75 15pt &quot;Ubuntu Condensed&quot;;
+color: rgb(255, 255, 255);
+border: None</string>
+                 </property>
+                 <property name="text">
+                  <string>Recontruction Error</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1" alignment="Qt::AlignLeft">
+                <widget class="QLabel" name="re">
+                 <property name="minimumSize">
+                  <size>
+                   <width>200</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">border-color: rgb(136, 138, 133);
+background-color: rgb(186, 189, 182);
+border-width : 1.5px;
+border-style:inset;
+border-radius: 8px;
+padding: 0 5px;
+color: rgb(255, 255, 255);</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item alignment="Qt::AlignRight">
+          <widget class="QFrame" name="frame_8">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>150</height>
+            </size>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <widget class="QLabel" name="label_13">
+              <property name="styleSheet">
+               <string notr="true">font: 75 8pt &quot;Ubuntu Condensed&quot;;
+color: rgb(255, 255, 255);
+border: none;</string>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Authors&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_7">
+              <property name="styleSheet">
+               <string notr="true">font: 75 10pt &quot;Ubuntu Condensed&quot;;
+border: none;
+color: rgb(255, 255, 255);</string>
+              </property>
+              <property name="text">
+               <string>TRAN CHI CUONG</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_8">
+              <property name="styleSheet">
+               <string notr="true">font: 75 10pt &quot;Ubuntu Condensed&quot;;
+border: none;
+color: rgb(255, 255, 255);</string>
+              </property>
+              <property name="text">
+               <string>DAO DUY NGU</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_10">
+              <property name="styleSheet">
+               <string notr="true">font: 75 10pt &quot;Ubuntu Condensed&quot;;
+border: none;
+color: rgb(255, 255, 255);</string>
+              </property>
+              <property name="text">
+               <string>LE VAN THIEN</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_11">
+              <property name="styleSheet">
+               <string notr="true">font: 75 10pt &quot;Ubuntu Condensed&quot;;
+border: none;
+color: rgb(255, 255, 255);</string>
+              </property>
+              <property name="text">
+               <string>NGUYEN VU HOAI DUY</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_12">
+              <property name="styleSheet">
+               <string notr="true">font: 75 10pt &quot;Ubuntu Condensed&quot;;
+border: none;
+color: rgb(255, 255, 255);</string>
+              </property>
+              <property name="text">
+               <string>HO THANH LONG</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
