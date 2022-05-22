@@ -110,7 +110,7 @@ def agumentation(path_dataset):
 
 
 if __name__ == '__main__':
-    agumentation('dataset_flower_origin')
+    agumentation('../dataset_flower_origin')
 
 
 

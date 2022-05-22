@@ -7,7 +7,7 @@ import yaml
 root_dir = '/'.join(os.path.dirname(__file__).split('/')[:-1])
 
 demosaic = Demosaic()
-with open(os.path.join(root_dir, 'config.yaml'), 'r') as f:
+with open(os.path.join(root_dir, 'src/config.yaml'), 'r') as f:
     param = yaml.load(f, Loader=yaml.FullLoader)
 input_size = param['input_size']
 

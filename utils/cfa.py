@@ -13,7 +13,7 @@ root_dir = '/'.join(os.path.dirname(__file__).split('/')[:-1])
 
 class Demosaic():
     def __init__(self):
-        with open(os.path.join(root_dir, 'config.yaml'), 'r') as f:
+        with open(os.path.join(root_dir, 'src/config.yaml'), 'r') as f:
             param = yaml.load(f, Loader=yaml.FullLoader)
         self.input_size = param['input_size']
     def bgr2cfa(self, image):

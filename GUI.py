@@ -27,8 +27,8 @@ from utils.transform import transformer
 from utils.cfa import Demosaic, demosaic
 from utils.draw import concat_image
 from utils.plot import plot_cm
-from home import Ui_Form as home
-from test_tab import Ui_Form as infference
+from src.home import Ui_Form as home
+from src.test_tab import Ui_Form as infference
 from sklearn import svm
 import pickle
 FILE = Path(__file__).resolve()
@@ -49,7 +49,7 @@ class TrainSVM(QThread):
     def run(self):
         input_path = os.path.join(self.dataset_dir, 'train')
         dir_save_model = 'runs'
-        with open('config.yaml', 'r') as f:
+        with open('src/config.yaml', 'r') as f:
             param = yaml.load(f, Loader=yaml.FullLoader)
         input_size = param['input_size']
         code_size = param['code_size']
@@ -89,7 +89,7 @@ class EvaluateSVM(QThread):
         self.dataset_dir = dataset_dir
         self.list_img_train = glob.glob(os.path.join(dataset_dir, 'train/*/*'))
         self.list_img_test = glob.glob(os.path.join(dataset_dir, 'test/*/*'))
-        with open('config.yaml', 'r') as f:
+        with open('src/config.yaml', 'r') as f:
             param = yaml.load(f, Loader=yaml.FullLoader)
         self.input_size = param['input_size']
         self.code_size = param['code_size']
@@ -147,7 +147,7 @@ class TrainNeural(QThread):
     def run(self):
         input_path = os.path.join(self.dataset_dir, 'train')
         dir_save_model = 'runs'
-        with open('config.yaml', 'r') as f:
+        with open('src/config.yaml', 'r') as f:
             param = yaml.load(f, Loader=yaml.FullLoader)
         input_size = param['input_size']
         code_size = param['code_size']
@@ -206,7 +206,7 @@ class EvaluateNeural(QThread):
         self.dataset_dir = dataset_dir
         self.list_img_train = glob.glob(os.path.join(dataset_dir, 'train/*/*'))
         self.list_img_test = glob.glob(os.path.join(dataset_dir, 'test/*/*'))
-        with open('config.yaml', 'r') as f:
+        with open('src/config.yaml', 'r') as f:
             param = yaml.load(f, Loader=yaml.FullLoader)
         self.input_size = param['input_size']
         self.code_size = param['code_size']
@@ -265,7 +265,7 @@ class TrainAutoencoder(QThread):
     def run(self):
         input_path = os.path.join(self.dataset_dir, 'train')
         dir_save_model = 'runs'
-        with open('config.yaml', 'r') as f:
+        with open('src/config.yaml', 'r') as f:
             param = yaml.load(f, Loader=yaml.FullLoader)
         input_size = param['input_size']
         code_size = param['code_size']
@@ -325,7 +325,7 @@ class EvaluateAutoencoder(QThread):
         self.list_img_test = glob.glob(os.path.join(dataset_dir, 'test/*/*'))
         self.start_idx_train = 0
         self.start_idx_test = 0
-        with open('config.yaml', 'r') as f:
+        with open('src/config.yaml', 'r') as f:
             param = yaml.load(f, Loader=yaml.FullLoader)
         self.input_size = param['input_size']
         self.code_size = param['code_size']
@@ -556,7 +556,7 @@ class Test(QWidget, infference):
         self.next_button.clicked.connect(self.next)
         self.back_button.clicked.connect(self.back)
         self.classifier = 'svm' if self.svm_checker.isChecked() else 'ann'
-        with open('config.yaml', 'r') as f:
+        with open('src/config.yaml', 'r') as f:
             param = yaml.load(f, Loader=yaml.FullLoader)
         self.input_size = param['input_size']
         self.code_size = param['code_size']
@@ -587,11 +587,7 @@ class Test(QWidget, infference):
                 percentage = percentage[index]
                 self.confidence.setText(str(int(percentage)) + '%')
                 pred = self.class_name[index]
-                
-
-
             inf_time = time.time() - last_time
-                        
             self.update_screen(image, self.screen_or)
             re_image = image_torch(y, input_size=self.input_size)
             re_image = demosaic.cfa2bgr(re_image)
