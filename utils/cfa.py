@@ -27,12 +27,5 @@ class Demosaic():
         rgb = demosaicing_CFA_Bayer_bilinear(cfa)
         rgb = rgb*255
         return rgb.astype('uint8')
-if __name__ == '__main__':
-    image = cv2.imread('/home/cuong/Desktop/autoencoder/auto-encoder/dataset_flower/hibiscus/hibiscus_2.png')
-    demosaic = Demosaic()
-    CFA = demosaic.bgr2cfa(image)
-    BGR = demosaic.cfa2bgr(CFA)
-    cv2.imshow('ori', image)
-    cv2.imshow('cfa', CFA)
-    cv2.imshow('bgr', BGR)
-    cv2.waitKey()
+
+demosaic = Demosaic()

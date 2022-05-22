@@ -11,7 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class home(object):
+class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(1677, 772)
@@ -84,7 +84,7 @@ class home(object):
         self.stop_ae_button.setGeometry(QtCore.QRect(480, 560, 101, 21))
         self.stop_ae_button.setObjectName("stop_ae_button")
         self.gridLayoutWidget = QtWidgets.QWidget(Form)
-        self.gridLayoutWidget.setGeometry(QtCore.QRect(480, 640, 181, 71))
+        self.gridLayoutWidget.setGeometry(QtCore.QRect(480, 640, 181, 89))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
         self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
@@ -131,7 +131,7 @@ class home(object):
         self.start_nn_button.setGeometry(QtCore.QRect(880, 590, 89, 25))
         self.start_nn_button.setObjectName("start_nn_button")
         self.gridLayoutWidget_2 = QtWidgets.QWidget(Form)
-        self.gridLayoutWidget_2.setGeometry(QtCore.QRect(880, 640, 171, 71))
+        self.gridLayoutWidget_2.setGeometry(QtCore.QRect(880, 640, 171, 89))
         self.gridLayoutWidget_2.setObjectName("gridLayoutWidget_2")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.gridLayoutWidget_2)
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -176,9 +176,9 @@ class home(object):
         self.line_9.setFrameShape(QtWidgets.QFrame.VLine)
         self.line_9.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_9.setObjectName("line_9")
-        self.pushButton_9 = QtWidgets.QPushButton(Form)
-        self.pushButton_9.setGeometry(QtCore.QRect(870, 480, 89, 25))
-        self.pushButton_9.setObjectName("pushButton_9")
+        self.start_svm = QtWidgets.QPushButton(Form)
+        self.start_svm.setGeometry(QtCore.QRect(870, 480, 89, 25))
+        self.start_svm.setObjectName("start_svm")
         self.line_10 = QtWidgets.QFrame(Form)
         self.line_10.setGeometry(QtCore.QRect(820, 490, 51, 16))
         self.line_10.setFrameShape(QtWidgets.QFrame.HLine)
@@ -226,5 +226,15 @@ class home(object):
         self.stop_nn_button.setText(_translate("Form", "Stop"))
         self.label_14.setText(_translate("Form", "<html><head/><body><p><span style=\" font-size:8pt;\">Saved Feature Extractor at ae.pt</span></p></body></html>"))
         self.label_15.setText(_translate("Form", "<html><head/><body><p><span style=\" font-size:14pt; font-weight:600; font-style:italic; text-decoration: underline; color:#204a87;\">Classifier</span></p></body></html>"))
-        self.pushButton_9.setText(_translate("Form", "Start SVM"))
+        self.start_svm.setText(_translate("Form", "Start SVM"))
         self.label_16.setText(_translate("Form", "<html><head/><body><p><span style=\" font-size:14pt; font-weight:600; font-style:italic; text-decoration: underline; color:#204a87;\">Evaluate</span></p></body></html>"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Form = QtWidgets.QWidget()
+    ui = Ui_Form()
+    ui.setupUi(Form)
+    Form.show()
+    sys.exit(app.exec_())
