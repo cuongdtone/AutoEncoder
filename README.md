@@ -9,9 +9,6 @@ Dao Duy Ngu
 Nguyen Vu Hoai Duy
 Ho Thanh Long
 ```
-## Sumary  
-***
-- Flower recognition with Auto Encoder + ANN/SVM  
 ## Dataset  
 
 [Link Dataset](https://drive.google.com/drive/folders/1H78orfSRfSBBxQyaxMgj_ZCKmp61eCDC?usp=sharing)
