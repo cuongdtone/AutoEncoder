@@ -1,6 +1,7 @@
 # Flower Recognition with Auto Encoder 
 ***
-Final Project of Machine Learning course
+Final Project of Machine Learning course  
+Lecture: Tran Thi Minh Hanh
 ## Member
 ```buildoutcfg
 Tran Chi Cuong
