@@ -13,7 +13,8 @@ Ho Thanh Long
 ***
 - Flower recognition with Auto Encoder + ANN/SVM  
 ## Dataset  
-https://drive.google.com/drive/folders/1H78orfSRfSBBxQyaxMgj_ZCKmp61eCDC?usp=sharing
+
+[Link Dataset](https://drive.google.com/drive/folders/1H78orfSRfSBBxQyaxMgj_ZCKmp61eCDC?usp=sharing)
 
 ## Auto Encoder 
 - Left: Original Image, Right: Recontructed Image (Test Set)  
