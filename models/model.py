@@ -89,12 +89,12 @@ class AE(nn.Module):
 
 class Net(nn.Module):
 
-    def __init__(self, input_size=32, num_classes=5, device='cpu'):
+    def __init__(self, input_size=32, num_classes=4, device='cpu'):
         super(Net, self).__init__()
         self.classifier = nn.Sequential(
-            nn.Linear(input_size, num_classes),
-            # nn.ReLU(True),
-            # nn.Linear(16, num_classes),
+            nn.Linear(input_size, 32),
+            nn.ReLU(True),
+            nn.Linear(32, num_classes),
         )
 
     def forward(self, x):

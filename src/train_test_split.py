@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+# @Organization  : DUT
+# @Author        : Cuong Tran
+# @Time          : 01/06/2022
+
 from sklearn.model_selection import train_test_split
 from glob import glob
 import os
