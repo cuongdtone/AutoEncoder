@@ -16,9 +16,7 @@ Ho Thanh Long
 ## Auto Encoder 
 - Left: Original Image, Right: Recontructed Image (Test Set)  
    
-<img  src="imgs/test_org_1.jpg" alt="Trulli" style="width:300px;"> 
--->
-<img  src="imgs/test_pred_1.jpg" alt="Trulli" style="width:300px;">   
+<img  src="imgs/test_org_1.jpg" alt="Trulli" style="width:300px;">--><img  src="imgs/test_pred_1.jpg" alt="Trulli" style="width:300px;">   
   
 -  
 
