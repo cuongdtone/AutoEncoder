@@ -20,15 +20,11 @@ Ho Thanh Long
   
 -  
 
-<img  src="imgs/test_org_2.jpg" alt="Trulli" style="width:300px;"> 
--->
-<img  src="imgs/test_pred_2.jpg" alt="Trulli" style="width:300px;">    
+<img  src="imgs/test_org_2.jpg" alt="Trulli" style="width:300px;"> --><img  src="imgs/test_pred_2.jpg" alt="Trulli" style="width:300px;">    
  
 -  
 
-<img  src="imgs/test_org_3.jpg" alt="Trulli" style="width:300px;"> 
--->
-<img  src="imgs/test_pred_3.jpg" alt="Trulli" style="width:300px;">  
+<img  src="imgs/test_org_3.jpg" alt="Trulli" style="width:300px;"> --><img  src="imgs/test_pred_3.jpg" alt="Trulli" style="width:300px;">  
 
 ## Classification  
 
