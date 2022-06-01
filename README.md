@@ -11,7 +11,9 @@ Ho Thanh Long
 ```
 ## Sumary  
 ***
-- Flower recognition with Auto Encoder + ANN/SVM
+- Flower recognition with Auto Encoder + ANN/SVM  
+## Dataset  
+https://drive.google.com/drive/folders/1H78orfSRfSBBxQyaxMgj_ZCKmp61eCDC?usp=sharing
 
 ## Auto Encoder 
 - Left: Original Image, Right: Recontructed Image (Test Set)  
