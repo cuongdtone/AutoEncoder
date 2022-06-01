@@ -1,6 +1,8 @@
-import os
-import torch
-import torchvision
+# -*- coding: utf-8 -*-
+# @Organization  : DUT
+# @Author        : Cuong Tran
+# @Time          : 01/06/2022
+
 from torchvision import transforms, datasets
 
 normalize = transforms.Normalize(mean=[0.5],

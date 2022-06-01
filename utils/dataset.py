@@ -1,15 +1,22 @@
+# -*- coding: utf-8 -*-
+# @Organization  : DUT
+# @Author        : Cuong Tran
+# @Time          : 01/06/2022
+
+
 import cv2
 import os
-from utils.cfa import Demosaic
+from utils.cfa import demosaic
 from sklearn.model_selection import train_test_split
 from glob import glob
 import yaml
-root_dir = '/'.join(os.path.dirname(__file__).split('/')[:-1])
 
-demosaic = Demosaic()
+
+root_dir = '/'.join(os.path.dirname(__file__).split('/')[:-1])
 with open(os.path.join(root_dir, 'src/config.yaml'), 'r') as f:
     param = yaml.load(f, Loader=yaml.FullLoader)
 input_size = param['input_size']
+
 
 def create_cfa_dataset(origin_path, save_path):
     list_classes = glob(origin_path + '/*')
@@ -37,6 +44,8 @@ def create_cfa_dataset(origin_path, save_path):
                 cv2.imwrite(os.path.join(save_path, path_clss_img), CFA.astype('uint8'))
             except:
                 continue
+
+
 def create_gray_dataset(origin_path, save_path):
     list_classes = glob(origin_path + '/*')
     try:
@@ -61,6 +70,8 @@ def create_gray_dataset(origin_path, save_path):
                 cv2.imwrite(os.path.join(save_path, path_clss_img), image)
             except:
                 continue
+
+
 def split_dataset(dataset_path, out_path):
     try:
         os.mkdir(out_path)
@@ -86,6 +97,8 @@ def split_dataset(dataset_path, out_path):
     for i in test:
         ds_path = out_path + '/test/' + '/'.join(i.split('/')[-2:])
         cv2.imwrite(ds_path, cv2.imread(i))
+
+
 if __name__ == '__main__':
     ori = '/home/cuong/Desktop/autoencoder/auto-encoder/dataset_flower_origin (copy)/test'
     ds = ori + '_split'

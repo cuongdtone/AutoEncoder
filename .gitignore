@@ -5,7 +5,7 @@ dataset_flower_cfa
 dataset_flower_origin
 src/test_recognition.py
 src/test_reconstruct_image.py
-src/test_tab.ui
+#src/test_tab.ui
 src/tool_create_bgr_object_dataset.py
 src/tool_crop_object_with_bg.py
 src/tool_filter_dataset.py
@@ -20,6 +20,6 @@ __pycache__
 src/untitled.ui
 src/evaluate_2.py
 src/evaluate_classification.py
-src/home.ui
+#src/home.ui
 src/new_gui.py
 

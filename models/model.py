@@ -1,18 +1,21 @@
+# -*- coding: utf-8 -*-
+# @Organization  : DUT
+# @Author        : Cuong Tran
+# @Time          : 01/06/2022
+
+
 import torch
 from torch import nn
 from PIL import Image
-from torchvision import transforms
-import cv2
 import sys
 from pathlib import Path
+from utils.transform import transformer
+
 
 FILE = Path(__file__).resolve()
 ROOT = FILE.parents[1]
-
 if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))
-
-from utils.transform import transformer
 
 
 def image_torch(x, input_size=32):
@@ -24,7 +27,6 @@ def image_torch(x, input_size=32):
 
 
 class AE(nn.Module):
-
     def __init__(self, input_size=32, code_size=15):
         super().__init__()
         # 1024 ==> 9

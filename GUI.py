@@ -1,5 +1,9 @@
-from cmath import inf
-from turtle import update
+# -*- coding: utf-8 -*-
+# @Organization  : DUT
+# @Author        : Cuong Tran
+# @Time          : 01/06/2022
+# @Function      : User Interface
+
 import cv2
 import numpy as np
 import pyqtgraph as pg
@@ -14,7 +18,6 @@ import time
 import glob
 import random
 from sklearn import metrics
-from sklearn.svm import SVC
 from pathlib import Path
 
 from PyQt5 import QtGui
@@ -24,8 +27,8 @@ from PyQt5.QtCore import pyqtSignal, pyqtSlot, Qt, QThread
 
 from models.model import AE, image_torch, Net
 from utils.transform import transformer
-from utils.cfa import Demosaic, demosaic
-from utils.draw import concat_image
+from utils.cfa import demosaic
+from utils.functions import concat_image
 from utils.plot import plot_cm
 from src.home import Ui_Form as home
 from src.test_tab import Ui_Form as infference
@@ -153,7 +156,7 @@ class TrainNeural(QThread):
         code_size = param['code_size']
         feature_extractor = torch.load('runs/ae.pt', map_location=device)
         feature_extractor.eval()
-        net = Net(input_size=code_size, num_classes=5)
+        net = Net(input_size=code_size, num_classes=4)
         optimizer = optim.Adam(net.parameters(), lr=1e-3)
         criterion = nn.CrossEntropyLoss()
         dataset = datasets.ImageFolder(input_path, transformer)
@@ -227,7 +230,7 @@ class EvaluateNeural(QThread):
                     class_idx = dict((v, k) for k, v in class_name.items())
                 truth_label = []
                 pred_label = []
-                for i in self.list_img_test:
+                for i in self.list_img_train:
                     image = cv2.imread(i, 0)
                     x = feature_extractor.preprocess_image(image)
                     code = feature_extractor.get_coding(x)
@@ -320,7 +323,6 @@ class EvaluateAutoencoder(QThread):
         self.cfa_flag = cfa
         self.run_flag = True
         self.time_per_epoch = time_per_epoch
-        self.cfa = Demosaic()
         self.list_img_train = glob.glob(os.path.join(dataset_dir, 'train/*/*'))
         self.list_img_test = glob.glob(os.path.join(dataset_dir, 'test/*/*'))
         self.start_idx_train = 0
@@ -349,8 +351,8 @@ class EvaluateAutoencoder(QThread):
                     x_image = image_torch(x, input_size=self.input_size)
                     y_image = image_torch(y, input_size=self.input_size)
                     if self.cfa_flag:
-                        x_image = self.cfa.cfa2bgr(x_image)
-                        y_image = self.cfa.cfa2bgr(y_image)
+                        x_image = demosaic.cfa2bgr(x_image)
+                        y_image = demosaic.cfa2bgr(y_image)
                     else:
                         x_image = cv2.cvtColor(x_image, cv2.COLOR_GRAY2BGR)
                         y_image = cv2.cvtColor(y_image, cv2.COLOR_GRAY2BGR)
@@ -367,8 +369,8 @@ class EvaluateAutoencoder(QThread):
                     x_image = image_torch(x, input_size=self.input_size)
                     y_image = image_torch(y, input_size=self.input_size)
                     if self.cfa_flag:
-                        x_image = self.cfa.cfa2bgr(x_image)
-                        y_image = self.cfa.cfa2bgr(y_image)
+                        x_image = demosaic.cfa2bgr(x_image)
+                        y_image = demosaic.cfa2bgr(y_image)
                     else:
                         x_image = cv2.cvtColor(x_image, cv2.COLOR_GRAY2BGR)
                         y_image = cv2.cvtColor(y_image, cv2.COLOR_GRAY2BGR)
@@ -450,9 +452,6 @@ class Home(QWidget, home):
             dir = QFileDialog.getExistingDirectory(None, 'Select', str(ROOT) + '/', QFileDialog.ShowDirsOnly)
             self.dataset_dir = dir
             self.info.append('Load ' + dir.split('/')[-1] + ' completed !!')
-            # self.cfa = self.CFA_checkbox.isChecked()
-            # print(self.cfa)
-            # print(self.dataset_dir)
         except:
             QMessageBox.warning(self, 'Warning', "Load data failed!")
 
@@ -526,7 +525,8 @@ class Home(QWidget, home):
         qt_img = self.convert_cv_qt(cv_img, 641, 371)
         self.screen.setPixmap(qt_img)
 
-    def convert_cv_qt(self, cv_img, w_screen, h_screen):
+    @staticmethod
+    def convert_cv_qt(cv_img, w_screen, h_screen):
         """Convert from an opencv image to QPixmap"""
         rgb_image = cv2.cvtColor(cv_img, cv2.COLOR_BGR2RGB)
         rgb_image = cv2.resize(rgb_image, (w_screen, h_screen))
@@ -542,6 +542,8 @@ class Test(QWidget, infference):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        # self.logo_1.setIcon(QIcon('icons/Logo_dhbkdn.jpg'))
+        # self.logo_2.setIcon(QIcon('icons/logodtvt.jpg'))
         self.feature_extractor = torch.load('runs/ae.pt', map_location=device)
         self.feature_extractor.eval()
         self.svm_classifier = pickle.load(open('runs/svm.pickle', 'rb'))
@@ -575,10 +577,10 @@ class Test(QWidget, infference):
             y = self.feature_extractor.decode(code)
             mse = self.mse(x, y).detach().numpy()
             self.re.setText('%.3f'%(mse))
-
             if self.svm_checker.isChecked():
                 index = self.svm_classifier.predict(code.cpu().detach().numpy())[0]
                 pred = self.class_name[index]
+                self.confidence.setText('')
             else:
                 out = self.nn_classifier(code)
                 _, index = torch.max(out, 1)
@@ -611,6 +613,7 @@ class Test(QWidget, infference):
             if self.svm_checker.isChecked():
                 index = self.svm_classifier.predict(code.cpu().detach().numpy())[0]
                 pred = self.class_name[index]
+                self.confidence.setText('')
             else:
                 out = self.nn_classifier(code)
                 _, index = torch.max(out, 1)
@@ -644,6 +647,7 @@ class Test(QWidget, infference):
             if self.svm_checker.isChecked():
                 index = self.svm_classifier.predict(code.cpu().detach().numpy())[0]
                 pred = self.class_name[index]
+                self.confidence.setText('')
             else:
                 out = self.nn_classifier(code)
                 _, index = torch.max(out, 1)
@@ -668,7 +672,8 @@ class Test(QWidget, infference):
         qt_img = self.convert_cv_qt(cv_img, 250, 250)
         screen.setPixmap(qt_img)
 
-    def convert_cv_qt(self, cv_img, w_screen, h_screen):
+    @staticmethod
+    def convert_cv_qt(cv_img, w_screen, h_screen):
         """Convert from an opencv image to QPixmap"""
         rgb_image = cv2.cvtColor(cv_img, cv2.COLOR_BGR2RGB)
         rgb_image = cv2.resize(rgb_image, (w_screen, h_screen))
@@ -696,6 +701,7 @@ class MyTableWidget(QWidget):
         #############################################
         self.layout.addWidget(self.tabs)
         self.setLayout(self.layout)
+        self.setWindowIcon(QtGui.QIcon('src/logomain.jpeg'))
 
     @pyqtSlot()
     def on_click(self):
@@ -708,7 +714,6 @@ def main():
     w = MyTableWidget()
     w.show()
     app.exec_()
-
 
 if __name__ == "__main__":
     main()
