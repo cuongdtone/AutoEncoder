@@ -38,7 +38,7 @@ FILE = Path(__file__).resolve()
 ROOT = FILE.parents[0]
 
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = 'cpu' # torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
 class TrainSVM(QThread):
@@ -75,7 +75,7 @@ class TrainSVM(QThread):
         X = np.array(list_data)
         y = np.array(list_label)
 
-        SVM = svm.SVC(decision_function_shape='ovo')
+        SVM = svm.SVC()
         SVM.fit(X, y)
         # save the model to disk
         filename = f'{dir_save_model}/svm.pickle'
@@ -272,8 +272,10 @@ class TrainAutoencoder(QThread):
             param = yaml.load(f, Loader=yaml.FullLoader)
         input_size = param['input_size']
         code_size = param['code_size']
-        model = AE(input_size=input_size, code_size=code_size).to(device)
-        model = torch.load(dir_save_model + '/ae.pt') #use checkpoint
+        try:
+            model = torch.load(dir_save_model + '/ae.pt') #use checkpoint
+        except:
+            model = AE(input_size=input_size, code_size=code_size).to(device)
         self.change_infor_signal.emit("#Parameter: %d"%(sum(p.numel() for p in model.parameters())))
         optimizer = optim.Adam(model.parameters(), lr=self.lr)
         criterion = nn.MSELoss()
@@ -409,7 +411,6 @@ class Home(QWidget, home):
         self.stop_nn_button.clicked.connect(self.stop_nn)
         self.start_svm.clicked.connect(self.train_svm)
 
-
     def train_nn(self):
         self.info.append('Traning NN with data at ' + self.dataset_dir.split('/')[-1])
         self.loss_hist = []
@@ -425,7 +426,6 @@ class Home(QWidget, home):
         self.evalue_nn_thread = EvaluateNeural(self.dataset_dir)
         self.evalue_nn_thread.change_screen_signal.connect(self.update_screen)
         self.evalue_nn_thread.start()
-
 
     def train_svm(self):
         self.info.append('Traning SVM with data at ' + self.dataset_dir.split('/')[-1])
@@ -590,7 +590,9 @@ class Test(QWidget, infference):
                 self.confidence.setText(str(int(percentage)) + '%')
                 pred = self.class_name[index]
             inf_time = time.time() - last_time
-            self.update_screen(image, self.screen_or)
+            ori_image = image_torch(x, input_size=self.input_size)
+            ori_image = demosaic.cfa2bgr(ori_image)
+            self.update_screen(ori_image, self.screen_or)
             re_image = image_torch(y, input_size=self.input_size)
             re_image = demosaic.cfa2bgr(re_image)
             self.update_screen(re_image, self.screen_re)
@@ -622,8 +624,10 @@ class Test(QWidget, infference):
                 percentage = percentage[index]
                 self.confidence.setText(str(int(percentage)) + '%')
                 pred = self.class_name[index]
-            inf_time = time.time() - last_time    
-            self.update_screen(image, self.screen_or)
+            inf_time = time.time() - last_time
+            ori_image = image_torch(x, input_size=self.input_size)
+            ori_image = demosaic.cfa2bgr(ori_image)
+            self.update_screen(ori_image, self.screen_or)
             re_image = image_torch(y, input_size=self.input_size)
             re_image = demosaic.cfa2bgr(re_image)
             self.update_screen(re_image, self.screen_re)
@@ -656,8 +660,10 @@ class Test(QWidget, infference):
                 percentage = percentage[index]
                 self.confidence.setText(str(int(percentage)) + '%')
                 pred = self.class_name[index]
-            inf_time = time.time() - last_time     
-            self.update_screen(image, self.screen_or)
+            inf_time = time.time() - last_time
+            ori_image = image_torch(x, input_size=self.input_size)
+            ori_image = demosaic.cfa2bgr(ori_image)
+            self.update_screen(ori_image, self.screen_or)
             re_image = image_torch(y, input_size=self.input_size)
             re_image = demosaic.cfa2bgr(re_image)
             self.update_screen(re_image, self.screen_re)
