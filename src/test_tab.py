@@ -283,7 +283,7 @@ class Ui_Form(object):
 "border-style:inset;\n"
 "border-radius: 8px;\n"
 "padding: 0 5px;\n"
-"color: rgb(255, 255, 255);")
+"color: rgb(0, 0, 0);")
         self.predict.setText("")
         self.predict.setObjectName("predict")
         self.gridLayout.addWidget(self.predict, 0, 1, 1, 1, QtCore.Qt.AlignLeft)
