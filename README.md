@@ -13,6 +13,10 @@ Ho Thanh Long
 ## Dataset  
 
 [Link Dataset](https://drive.google.com/drive/folders/1H78orfSRfSBBxQyaxMgj_ZCKmp61eCDC?usp=sharing)
+## Report
+[Report](https://drive.google.com/file/d/1uIyUPaEA5EE7FDbGGl6aoHODTnk0uyWK/view?usp=sharing)  
+[Slice](https://drive.google.com/file/d/1uxdaAadKE7QhhAX5leOSYxQUVOMccNx3/view?usp=sharing)
+
 
 ## Auto Encoder 
 - Left: Original Image, Right: Recontructed Image (Test Set)  
